@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import '../App.css';
 
 function Squats() {
 
@@ -6,8 +7,8 @@ function Squats() {
     return(
         <div>
         <p>Squat Count: {squatCount}</p>
-        <button onClick={() => {changeSquats(squatCount + 1)}}>Increase Repitition</button>
-        <button onClick={() => {changeSquats(squatCount * 0)}}>Reset Counter</button>
+        <button className="App-button" onClick={() => {changeSquats(squatCount + 1)}}>Add Squat</button>
+        <button className="App-button" onClick={() => {changeSquats(squatCount * 0)}}>Reset Counter</button>
         </div>
     );
 }
