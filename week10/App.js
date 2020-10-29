@@ -6,7 +6,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>My name is Jacob!</Text>
-      <Text>My favorite food is pizza! hello</Text>
+      <Text>My favorite food is pizza!</Text>
     </View>
   );
 }
