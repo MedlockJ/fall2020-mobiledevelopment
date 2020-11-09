@@ -1,0 +1,12 @@
+{
+  "name": "week13snack",
+  "displayName": "week13snack",
+  "expo": {
+    "name": "week13snack",
+    "slug": "week13snack",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
