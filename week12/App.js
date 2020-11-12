@@ -1,12 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Button, Card, Input} from 'react-native-elements';
+
 
 export default function App() {
+
+  const [pressed, setPressed] = useState(false);
+  let choice = ' ';
+  const verifyPress = (props) => {
+    if (props==1){
+      choice = 'People';
+      setPressed(true);
+    }
+    else if (props==2){
+      choice = 'Places';
+      setPressed(true);
+    }
+    else if (props==3){
+      choice = 'Things';
+      setPressed(true);
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {
+        pressed? (
+        <Card>
+          <Text>You chose {choice}</Text>
+        </Card>
+      ) : (
+        <Card>
+          <Button title="People" type="raised" onPress={ () => {verifyPress(1)}}/>
+          <Button title="Places" type="raised" onPress={ () => {verifyPress(2)}}/>
+          <Button title="Things" type="raised" onPress={ () => {verifyPress(3)}} />
+        </Card>
+      )
+      }
     </View>
   );
 }
