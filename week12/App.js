@@ -6,18 +6,19 @@ import { Button, Card, Input} from 'react-native-elements';
 export default function App() {
 
   const [pressed, setPressed] = useState(false);
-  let choice = ' ';
+  const [choice, setChoice] = useState('');
+
   const verifyPress = (props) => {
     if (props==1){
-      choice = 'People';
+      setChoice('People');
       setPressed(true);
     }
     else if (props==2){
-      choice = 'Places';
+      setChoice('Places');
       setPressed(true);
     }
     else if (props==3){
-      choice = 'Things';
+      setChoice('Things');
       setPressed(true);
     }
   };
