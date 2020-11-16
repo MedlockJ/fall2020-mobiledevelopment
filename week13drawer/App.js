@@ -11,11 +11,11 @@ function Home(props) {
       <Text>Home Screen</Text>
       <Button
         title="Sit Up Tracking"
-        onPress={() => props.navigation.navigate('Sit')}
+        onPress={() => props.navigation.navigate('Sit Ups')}
       />
       <Button
         title="Push Up Tracking"
-        onPress={() => props.navigation.navigate('Push')}
+        onPress={() => props.navigation.navigate('Push Ups')}
       />
     </View>
   );
@@ -46,7 +46,7 @@ function Push(props) {
   const [push, changePush] = useState(0);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Push Ups: {sit}</Text>
+      <Text>Push Ups: {push}</Text>
       <Button
         title="Change Rep"
         onPress ={() => changePush(push+1)}
