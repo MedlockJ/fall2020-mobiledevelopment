@@ -1,15 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useReducer } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {state, reducer} from './components/ApplicationState';
+import DecreaseCount from './components/DecreaseCount';
+import IncreaseCount from './components/IncreaseCount';
+import ShowCount from './components/ShowCount';
 
 export default function App() {
   const [currentState, dispatch] = useReducer(reducer, state);
 
   return (
-    <div className="App">
+    <div className="container">
       <header className="App-header">
-        <button onClick={() => { dispatch({"type": "increment"}) } }>Click me (in App)!</button>
+        <IncreaseCount dispatch={dispatch} />
         <ShowCount currentState={currentState} />
         <DecreaseCount dispatch={dispatch} />
       </header>
