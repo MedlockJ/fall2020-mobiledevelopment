@@ -1,27 +1,27 @@
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createStackNavigator } from '@react-navigation/stack';
+import { color } from 'react-native-reanimated';
 
 //Add 3 Components and use state
 //Food Menu App
 
 function Home(props) {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Welcome to Generic Restaraunt!</Text>
-      <Button
+    <View style={styles.container}>
+      <Text style={styles.text}>Welcome to Generic Restaraunt!</Text>
+      <Button style={styles.button}
         title="Brunch"
         onPress ={() => props.navigation.navigate('Brunch')}
       />
-      <Button
+      <Button style={styles.button}
         title="Lunch"
         onPress={() => props.navigation.navigate('Lunch')}
       />
-      <Button
+      <Button style={styles.button}
         title="Drinks"
         onPress={() => props.navigation.navigate('Drinks')}
       />
@@ -32,16 +32,23 @@ function Home(props) {
 function Brunch(props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Brunch Specials</Text>
+      
+      <Text style={styles.text}>Brunch Specials</Text>
+      <Card>
       <Button
         title="Details"
         onPress ={() => props.navigation.navigate('BrunchItem')}
       />
+      </Card>
+      <Card>
       <Button
         title="Details"
         onPress={() => props.navigation.navigate('BrunchItem2')}
       />
-      <Button
+      </Card>
+      
+    
+      <Button style={styles.button}
         title="Return Home"
         onPress={() => props.navigation.navigate('Home')}
       />
@@ -52,16 +59,16 @@ function Brunch(props) {
 function Lunch(props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Lunch Menu 11AM-5PM</Text>
+      <Text style={styles.text}>Lunch Menu 11AM-5PM</Text>
       <Button
-        title="Detais"
+        title="Details"
         onPress ={() => props.navigation.navigate('LunchItem')}
       />
       <Button
-        title="Detaila"
+        title="Details"
         onPress={() => props.navigation.navigate('LunchItem2')}
       />
-      <Button
+      <Button style={styles.button}
         title="Return Home"
         onPress={() => props.navigation.navigate('Home')}
       />
@@ -72,16 +79,16 @@ function Lunch(props) {
 function Drinks(props) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Drinks Available on Tap</Text>
+      <Text style={styles.text}>Drinks Available on Tap</Text>
       <Button
-        title="Detais"
+        title="Details"
         onPress ={() => props.navigation.navigate('DrinkItem')}
       />
       <Button
         title="Details"
         onPress={() => props.navigation.navigate('DrinkItem2')}
       />
-      <Button
+      <Button style={styles.button}
         title="Return Home"
         onPress={() => props.navigation.navigate('Home')}
       />
@@ -93,12 +100,14 @@ function BrunchItem(props) {
   const [push, changePush] = useState(0);
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Card>
       <Text>Chicken and Waffles</Text>
 
       <Button
         title="Back"
         onPress={() => props.navigation.navigate('Brunch')}
       />
+      </Card>
     </View>
   );
 }
@@ -146,41 +155,37 @@ function LunchItem2(props) {
 }
 
 const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
 
-function Root() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Brunch" component={Brunch} />
-      <Stack.Screen name="Lunch" component={Lunch} />
-      <Stack.Screen name="Drinks" component={Drinks} />
-      <Stack.Screen name="BrunchItem" component={BrunchItem} />
-      <Stack.Screen name="BrunchItem2" component={BrunchItem2} />
-      <Stack.Screen name="LunchItem" component={LunchItem} />
-      <Stack.Screen name="LunchItem2" component={LunchItem2} />
-    </Stack.Navigator>
-  );
-}
-
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="Root" component={Root} />
+          <Drawer.Screen name="Brunch" component={Brunch} />
+            <Drawer.Screen name="BrunchItem" component={BrunchItem} />
+            <Drawer.Screen name="BrunchItem2" component={BrunchItem2} />
+          <Drawer.Screen name="Lunch" component={Lunch} />
+          <Drawer.Screen name="Drinks" component={Drinks} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
 }
 
+export default App;
+
 const styles = StyleSheet.create({
+  text: {
+    fontSize: '30px'
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'Black',
     alignItems: 'center',
     justifyContent: 'center',
+    fontSize: '16px'
   },
-  paragraph:{
-    margin: '1px'
+  button:{
+    margin: '5px',
+    backgroundColor: 'Gray'
   },
 });
